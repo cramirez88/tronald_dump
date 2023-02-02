@@ -1,10 +1,12 @@
-
+import Search from './components/Search';
 import './App.css';
+import TrumpQuote from './components/TrumpQuote';
 
 function App() {
   return (
     <div className="App">
-      <h1>Trump Quotes</h1>
+      <Search/>
+      <TrumpQuote/>
     </div>
   );
 }
