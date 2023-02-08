@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-
+import moment from 'moment'
 
 function TrumpQuote() {
   const [apiData, setApiData] = useState({})
   const [tweet, setTweeter] = useState('')
+  const [time, setTime] = useState([])
 
   useEffect(() => {
     const options = {
@@ -17,22 +18,26 @@ function TrumpQuote() {
       }
       
     };
+
+    
   
     axios.request(options)
     .then(res => {
       console.log(res.data)
       setApiData(res.data)
       setTweeter(res.data._embedded.source[0])
+      setTime(moment(res.data.appeared_at).format("MM-DD-YYYY"))
+      
     })
     .catch(err => console.log(err))
   }, [])
   return (
     <div>
-      <h3>{apiData.value}</h3>
+      <h3>"{apiData.value}"</h3>
       <p>Tags: {apiData.tags}</p>
-      {/* <a href={apiData._embedded.source[0].url}>Trump's Twitter</a> */}
+      <p>Tweeted On: {time}</p>
       <p>Twitter Source: </p>
-      <a href={`${tweet.url}`}>{tweet.url}</a>
+      <a href={`${tweet.url}`} target='_blank' rel='noreferrer'>View Tweet</a>
     </div>
   )
 }
