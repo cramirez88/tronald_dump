@@ -23,7 +23,7 @@ function TrumpQuote() {
   
     axios.request(options)
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       setApiData(res.data)
       setTweeter(res.data._embedded.source[0])
       setTime(moment(res.data.appeared_at).format("MM-DD-YYYY"))
