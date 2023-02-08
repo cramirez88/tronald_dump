@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 
-function TrumpQuote() {
-  const [apiData, setApiData] = useState({})
+function TrumpQuote(props) {
+  const {apiData, setApiData} = props
+  const [quoteTweet, setQuoteTweet] = useState({})
   const [tweet, setTweeter] = useState('')
   const [time, setTime] = useState([])
 
@@ -24,7 +25,7 @@ function TrumpQuote() {
     axios.request(options)
     .then(res => {
       // console.log(res.data)
-      setApiData(res.data)
+      setQuoteTweet(res.data)
       setTweeter(res.data._embedded.source[0])
       setTime(moment(res.data.appeared_at).format("MM-DD-YYYY"))
       
@@ -33,11 +34,11 @@ function TrumpQuote() {
   }, [])
   return (
     <div>
-      <h3>"{apiData.value}"</h3>
-      <p>Tags: {apiData.tags}</p>
+      <h3>"{quoteTweet.value}"</h3>
+      <p>Tags: {quoteTweet.tags}</p>
       <p>Tweeted On: {time}</p>
-      <p>Twitter Source: </p>
-      <a href={`${tweet.url}`} target='_blank' rel='noreferrer'>View Tweet</a>
+      <p>Twitter Source: <a href={`${tweet.url}`} target='_blank' rel='noreferrer'>View Tweet</a></p>
+      
     </div>
   )
 }

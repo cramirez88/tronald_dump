@@ -1,12 +1,12 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import axios from 'axios'
 
-function TrumpTag() {
-  const [apiData, setApiData] = useState({})
-  const [embedded, setEmbedded] = useState({})
-  const [actualTag, setActualTag] = useState([])
-  const [individualTags, setIndividualTags] = useState([])
+function TrumpTag(props) {
+  const {apiData, setApiData} = props
+  const {embedded, setEmbedded} = props
+  const {actualTag, setActualTag} = props
+  // const [individualTags, setIndividualTags] = useState([])
  
 const options = {
   method: 'GET',
@@ -41,7 +41,7 @@ const options = {
         ))
         
       }
-      
+
     </div>
   )
 }
