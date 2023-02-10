@@ -9,16 +9,23 @@ function App() {
   // const [apiData, setApiData] = useState({})
   const [embedded, setEmbedded] = useState({})
   const [actualTag, setActualTag] = useState([])
+  const [quoteTweet, setQuoteTweet] = useState({})
+  const [tags, setTags] = useState([])
+
   return (
     <div className="App">
-      <Search/>
+      <Search />
       <TrumpQuote apiData={apiData} setApiData={setApiData}
                   embedded={embedded} setEmbedded={setEmbedded}
                   actualTag={actualTag} setActualTag={setActualTag}
+                  quoteTweet={quoteTweet} setQuoteTweet={setQuoteTweet}
+                  tags={tags} setTags={setTags}
       />
       <TrumpTag apiData={apiData} setApiData={setApiData}
                 embedded={embedded} setEmbedded={setEmbedded}
                 actualTag={actualTag} setActualTag={setActualTag}
+                quoteTweet={quoteTweet} setQuoteTweet={setQuoteTweet}
+                tags={tags} setTags={setTags}
       />
     </div>
   );
