@@ -11,6 +11,8 @@ function TrumpQuote(props) {
   const { embedded, setEmbedded } = props;
   const { actualTag, setActualTag } = props;
 
+
+  
   useEffect(() => {
     let options = {
       method: 'GET',
@@ -22,16 +24,27 @@ function TrumpQuote(props) {
       }
       
     };
-      axios.request(options)
-      .then(res => {
-        setQuoteTweet(res.data)
-        console.log(quoteTweet)
-        setTags(res.data.tags)
-        console.log(res.data.tags)
-        setTweeter(res.data._embedded.source[0])
-        setTime(moment(res.data.appeared_at).format("MM-DD-YYYY"))
-      })  
+    
+    axios.all([axios.request(options),
+      axios.request({...options, url: 'https://matchilling-tronald-dump-v1.p.rapidapi.com/tag'})])
+.then(axios.spread((firstResponse, secondResponse) => {  
+    console.log(firstResponse.data,secondResponse.data);
+    setQuoteTweet(firstResponse.data)
+        // console.log(quoteTweet)
+        setTags(firstResponse.data.tags)
+        console.log(` ${tags} hi `)
+        setTweeter(firstResponse.data._embedded.source[0])
+        setTime(moment(firstResponse.data.appeared_at).format("MM-DD-YYYY"))
+        // SECOND CALL
+        let filteredTagData = secondResponse.data._embedded.tag.filter(tag => tag.value === firstResponse.data.tags[0])
+        console.log(filteredTagData)
+        setActualTag(filteredTagData);
+}))
+.catch(error => console.log(error));
+
     }, [])
+
+
 
   
   return (
