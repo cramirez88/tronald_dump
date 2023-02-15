@@ -41,7 +41,6 @@ function TrumpQuote(props) {
         setActualTag(filteredTagData);
 }))
 .catch(error => console.log(error));
-
     }, [])
 
 
@@ -50,7 +49,6 @@ function TrumpQuote(props) {
   return (
     <div>
       <h3>"{quoteTweet.value}"</h3>
-      <p>Tags: {tags}</p>
       <p>Tweeted On: {time}</p>
       <p>Twitter Source: <a href={`${tweet.url}`} target='_blank' rel='noreferrer'>View Tweet</a></p>
       
