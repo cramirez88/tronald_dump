@@ -13,7 +13,7 @@ function TrumpTag(props) {
         actualTag.map((victim, index) => {
         
           return (
-            <div>
+            <div key={index}>
             <p>Tags: {tags}</p>
             <p key={index}>
               What Trump said about:{" "}
