@@ -1,10 +1,11 @@
 import React from 'react'
+import Button from '@mui/material/Button';
 
 function Search() {
   return (
     <div>
       <form>
-        <button>Get a Random Trump Quote</button>
+        <Button variant="contained">Random Trump Tweet</Button>
       </form>
     </div>
   )
