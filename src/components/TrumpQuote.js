@@ -32,12 +32,12 @@ function TrumpQuote(props) {
     setQuoteTweet(firstResponse.data)
         // console.log(quoteTweet)
         setTags(firstResponse.data.tags)
-        console.log(` ${tags} hi `)
+        // console.log(` ${tags} hi `)
         setTweeter(firstResponse.data._embedded.source[0])
         setTime(moment(firstResponse.data.appeared_at).format("MM-DD-YYYY"))
         // SECOND CALL
         let filteredTagData = secondResponse.data._embedded.tag.filter(tag => tag.value === firstResponse.data.tags[0])
-        console.log(filteredTagData)
+        // console.log(filteredTagData)
         setActualTag(filteredTagData);
 }))
 .catch(error => console.log(error));
