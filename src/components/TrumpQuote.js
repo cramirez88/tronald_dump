@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
+import { Card } from '@mui/material'
 
 function TrumpQuote(props) {
   const {apiData, setApiData} = props
@@ -49,8 +50,8 @@ function TrumpQuote(props) {
   return (
     <div>
       <h3>"{quoteTweet.value}"</h3>
-      <p>Tweeted On: {time}</p>
-      <p>Twitter Source: <a href={`${tweet.url}`} target='_blank' rel='noreferrer'>View Tweet</a></p>
+      <Card variant="outlined">Tweeted On: {time}</Card>
+      <Card variant='outlined'>Twitter Source: <a href={`${tweet.url}`} target='_blank' rel='noreferrer'>View Tweet</a></Card>
       
     </div>
   )

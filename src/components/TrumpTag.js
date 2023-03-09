@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { Card } from "@mui/material";
 
 function TrumpTag(props) {
   const { actualTag, setActualTag } = props;
@@ -14,11 +15,11 @@ function TrumpTag(props) {
         
           return (
             <div key={index}>
-            <p>Tags: {tags}</p>
-            <p key={index}>
+            <Card>Tags: {tags}</Card>
+            <Card key={index}>
               What Trump said about:{" "}
               <a href={`${victim._links.self.href}`}>{victim.value}</a>
-            </p>
+            </Card>
             </div>
           );
         })}
