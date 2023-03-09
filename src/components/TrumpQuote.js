@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import { Card } from '@mui/material'
+import { Link } from 'react-router-dom'
+import Search from './Search'
 
 function TrumpQuote(props) {
   const {apiData, setApiData} = props
@@ -49,9 +51,26 @@ function TrumpQuote(props) {
   
   return (
     <div>
+      <Link to={'/'}>Go Back</Link>
       <h3>"{quoteTweet.value}"</h3>
       <Card variant="outlined">Tweeted On: {time}</Card>
       <Card variant='outlined'>Twitter Source: <a href={`${tweet.url}`} target='_blank' rel='noreferrer'>View Tweet</a></Card>
+      {
+        actualTag.length === 0?
+        <p>No Tag about anyone- Trump is just being Trump</p>:
+        actualTag.map((victim, index) => {
+        
+          return (
+            <div key={index}>
+            <Card>Tags: {tags}</Card>
+            <Card key={index}>
+              What Trump said about:{" "}
+              <a href={`${victim._links.self.href}`}>{victim.value}</a>
+            </Card>
+            </div>
+          );
+        })}
+      
       
     </div>
   )
